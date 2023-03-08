@@ -1,0 +1,47 @@
+<template>
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-4">
+            <lightning-card title="Options Section">
+                <template if:true={loaded}>
+                    <lightning-combobox
+                        name="progress"
+                        label="Libraries"
+                        value={value}
+                        placeholder="Select Library"
+                        options={optionsArray}
+                        onchange={handleChange} >
+                    </lightning-combobox>
+
+                    
+                    <lightning-input type="search"
+                    onchange={handleSearchTermChange}
+                    variant="label-hidden"
+                    class="slds-var-m-bottom_small"
+                    label="Search"
+                    placeholder="Search for Users or Books"
+                    value={searchTerm}>
+                </lightning-input>
+
+
+                </template>
+            </lightning-card>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-large-size_3-of-4">
+           <div class="slds-p-bottom_large">
+            <lightning-datatable if:true={books}
+                key-field="Id"
+                data={books.data}
+                columns={columns}
+                >
+            </lightning-datatable>
+        </div>
+            <lightning-datatable if:true={users}
+                 class="slds-p-top_small"
+                key-field="Id"
+                data={users.data}
+                columns={userColumns}
+                >
+            </lightning-datatable>
+    </div>
+    </div>   
+</template>

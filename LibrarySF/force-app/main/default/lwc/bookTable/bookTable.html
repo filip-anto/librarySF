@@ -1,0 +1,20 @@
+<template>
+	<lightning-card title="Book" icon-name="standard:people">
+		<div class="slds-var-m-around_medium">
+			<!-- Show supervisor when bear is loaded -->
+			<template if:true={book.data}>
+				<lightning-record-form
+					object-api-name="Library__c"
+					record-id={libraryId}
+                    layout-type="Compact">
+</lightning-record-form>
+			</template>
+			<!-- Data failed to load -->
+			<template if:true={book.error}>
+				<div class="slds-text-color_error">
+					An error occurred while loading the book record
+				</div>
+			</template>
+		</div>
+	</lightning-card>
+</template>
